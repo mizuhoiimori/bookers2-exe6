@@ -38,10 +38,11 @@
         <% else %>
             <td><%= link_to book_favorites_path(book), method: :post do %>
               <i class="far fa-heart color:blue;"></i>
-              <span id="fav-bl"><%= book.favorites.count %></span>
+              <span id="fav-blue"><%= book.favorites.count %></span>
                 <% end %>
             </td>
         <% end %>
+          <td>コメント数：<%= book.book_comments.count %></td>
         <% end %>
           </tr>
       </tbody>
