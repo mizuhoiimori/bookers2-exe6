@@ -50,11 +50,12 @@
             </td>
             <td><%= book_comment.comment %></td>
               <% if book_comment.user == current_user %>
-              <td><%= link_to 'Destroy', book_path(@book), method: :delete, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
+              <td><%= link_to 'Destroy', book_book_comments_path(@book.id, @book_comment), method: :delete, class: "btn btn-sm btn-danger destroy_book_#{@book.id}"%></td>
               <% end %>
           </tr>
         <% end %>
         </table>
+
         <table class='table'>
         <%= form_with(model:[@book, @book_comment], local:true) do |f| %>
           <div class="form-group">
