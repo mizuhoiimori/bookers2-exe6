@@ -1,0 +1,50 @@
+<div class='container-fluid'>
+  <div class='row'>
+    <% if @model == "user" %>
+      <h2>User search for"<%= @content %>"</h2>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Introduction</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @records.each do |record| %>
+            <tr>
+              <td><%= attachment_image_tag(record, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %></td>
+              <td><%= record.name %></td>
+              <td><%= record.introduction %></td>
+          <% end %>
+        </tbody>
+      </table>
+    <% else @model == "book" %>
+      <h2>Book search for"<%= @content %>"</h2>
+  		<table class='table'>
+    		<thead>
+          <tr>
+            <th colspan="1"></th>
+            <th>Title</th>
+            <th>Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @records.each do |record| %>
+    		  <tr>
+    		    <td class="col-3">
+              <%= attachment_image_tag(record.user, :profile_image, :fill, 50, 50, fallback: "no-image-icon.jpg") %>
+            </td>
+            <td>
+                <%= link_to record.title, book_path(@records) %>
+            </td>
+            <td>
+                <%= record.body %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
