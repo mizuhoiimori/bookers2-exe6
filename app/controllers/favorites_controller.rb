@@ -5,13 +5,15 @@ class FavoritesController < ApplicationController
     @book = Book.find(params[:book_id])
     @favorite = current_user.favorites.new(book_id: params[:book_id])
     @favorite.save
-    redirect_to request.referer
+    # redirect_to request.referer
+    # 非同期通信実装
   end
 
   def destroy
     @book = Book.find(params[:book_id])
     @favorite = Favorite.find_by(book_id: params[:book_id], user_id: current_user.id)
     @favorite.destroy
-    redirect_to request.referer
+    # redirect_to request.referer
+    # 非同期通信実装
   end
 end

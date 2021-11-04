@@ -10,8 +10,9 @@ def create
 end
 
 def destroy
-  BookComment.find_by(params[:id]).destroy
-  redirect_to request.referer
+  @book = Book.find(params[:book_id])
+  @book_comments = BookComment.find(params[:book_comment_id])
+  @book_comments.destroy
 end
 
 private

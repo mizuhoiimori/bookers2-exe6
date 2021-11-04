@@ -6,6 +6,7 @@ before_action :ensure_current_user,{only: [:edit, :update, :destroy]}
     @user = @book.user
     @book_new = Book.new
     @book_comment = BookComment.new
+    @book_comments = BookComment.find_by(params[:id])
   end
 
   def index
